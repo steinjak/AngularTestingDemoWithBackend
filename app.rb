@@ -1,16 +1,21 @@
 require 'sinatra'
+require 'json'
 require 'mongo'
 
 helpers do
   def categories
-    set :db, "angular-shop-backend" unless settings.db?
-    db = Mongo::Connection.new.db(settings.db)
+    begin
+      db_name = settings.db
+    rescue NoMethodError
+      db_name = "angular-shop"
+    end
+    db = Mongo::Connection.new.db(db_name)
     db.collection("categories")
   end
 end
 
 get "/categories/:name" do
-  categories.find_one(:_id => params[:name]).to_json
+  categories.find_one(:id => params[:name]).to_json
 end
 
 get "/categories" do

@@ -15,9 +15,9 @@ describe 'The browsing service' do
   end
 
   before(:each) do
-    test_data = [{:_id => "food", :name => "Food", :blurb => "Yummy things"},
-            {:_id => "sports", :name => "Sports", :blurb => "Sporty things"},
-            {:_id => "animals", :name => "Animals", :blurb => "Living things"}]
+    test_data = [{:id => "food", :name => "Food", :blurb => "Yummy things"},
+            {:id => "sports", :name => "Sports", :blurb => "Sporty things"},
+            {:id => "animals", :name => "Animals", :blurb => "Living things"}]
 
     connection = Mongo::Connection.new
     db = connection.db("categories-tests")
