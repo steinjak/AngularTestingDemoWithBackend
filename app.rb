@@ -2,6 +2,8 @@ require 'sinatra'
 require 'json'
 require 'mongo'
 
+set :public_folder, Proc.new { File.join(root, "client/app") }
+
 helpers do
   def categories
     begin

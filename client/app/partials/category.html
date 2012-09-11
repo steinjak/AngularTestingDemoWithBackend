@@ -1,0 +1,18 @@
+<div class="page-header">
+    <h1>{{category.name}} <small>{{category.blurb}}</small></h1>
+</div>
+<ul class="thumbnails">
+    <li class="span3" ng-repeat="item in category.items">
+        <div class="thumbnail">
+            <img ng-src="{{item.image}}" alt="{{item.name}}">
+            <h3>{{item.name}}</h3>
+            <p>Price: {{item.price}} NOK</p>
+            <form ng-init="quantity=1">
+                <div class="input-append">
+                <input type="text" value="1" ng-model="quantity" class="input-mini" style="text-align: right" /><a class="btn btn-primary" ng-href ng-click="addToCart(item, quantity)">Buy now</a>
+                </div>
+            </form>
+        </div>
+    </li>
+</ul>
+<a href="#/categories" class="btn">Go back</a>
