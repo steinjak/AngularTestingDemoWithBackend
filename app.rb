@@ -6,11 +6,7 @@ set :public_folder, Proc.new { File.join(root, "client/app") }
 
 helpers do
   def categories
-    begin
-      db_name = settings.db
-    rescue NoMethodError
-      db_name = "angular-shop"
-    end
+    db_name = (settings.respond_to? :db) ? settings.db : "angular-shop"
     db = Mongo::Connection.new.db(db_name)
     db.collection("categories")
   end
